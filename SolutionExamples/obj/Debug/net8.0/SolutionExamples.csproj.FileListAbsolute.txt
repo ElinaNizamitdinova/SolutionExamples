@@ -1,0 +1,14 @@
+E:\elina\SolutionExamples\SolutionExamples\bin\Debug\net8.0\SolutionExamples.exe
+E:\elina\SolutionExamples\SolutionExamples\bin\Debug\net8.0\SolutionExamples.deps.json
+E:\elina\SolutionExamples\SolutionExamples\bin\Debug\net8.0\SolutionExamples.runtimeconfig.json
+E:\elina\SolutionExamples\SolutionExamples\bin\Debug\net8.0\SolutionExamples.dll
+E:\elina\SolutionExamples\SolutionExamples\bin\Debug\net8.0\SolutionExamples.pdb
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\SolutionExamples.GeneratedMSBuildEditorConfig.editorconfig
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\SolutionExamples.AssemblyInfoInputs.cache
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\SolutionExamples.AssemblyInfo.cs
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\SolutionExamples.csproj.CoreCompileInputs.cache
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\SolutionExamples.dll
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\refint\SolutionExamples.dll
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\SolutionExamples.pdb
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\SolutionExamples.genruntimeconfig.cache
+E:\elina\SolutionExamples\SolutionExamples\obj\Debug\net8.0\ref\SolutionExamples.dll
