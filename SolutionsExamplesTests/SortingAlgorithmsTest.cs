@@ -5,24 +5,26 @@ namespace SolutionsExamplesTests
     [TestClass]
     public class SortingAlgorithmsTest
     {
+        SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
+
         [TestMethod]
         public void TestBubbleSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.BubbleSort(num);
+            sortingAlgorithms.BubbleSort(num);
         }
 
         [TestMethod]
         public void TestNullBubbleSort()
         {
-            SortingAlgorithms.BubbleSort(null);
+            sortingAlgorithms.BubbleSort(null);
         }
 
         [TestMethod]
         public void TestEmptyBubbleSort()
         {
             int[] num = { };
-            SortingAlgorithms.BubbleSort(num);
+            sortingAlgorithms.BubbleSort(num);
         }
 
 
@@ -30,37 +32,37 @@ namespace SolutionsExamplesTests
         public void TestInsertionSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.InsertionSort(num);
+            sortingAlgorithms.InsertionSort(num);
         }
         [TestMethod]
         public void TestNullInsertionSort()
         { 
-            SortingAlgorithms.InsertionSort(null);
+            sortingAlgorithms.InsertionSort(null);
         }
         [TestMethod]
         public void TestEmptyInsertionSort()
         {
             int[] num = {};
-            SortingAlgorithms.InsertionSort(num);
+            sortingAlgorithms.InsertionSort(num);
         }
 
         [TestMethod]
         public void TestShakerSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.ShakerSort(num);
+            sortingAlgorithms.ShakerSort(num);
         }
         [TestMethod]
         public void TestNullShakerSort()
         {
-            SortingAlgorithms.ShakerSort(null); ;
+            sortingAlgorithms.ShakerSort(null); ;
         }
 
         [TestMethod]
         public void TestEmptyShakerSort()
         {
             int[] num = {};
-            SortingAlgorithms.ShakerSort(num);
+            sortingAlgorithms.ShakerSort(num);
         }
 
 
@@ -68,61 +70,61 @@ namespace SolutionsExamplesTests
         public void TestStoogeSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.StoogeSort(num,0,num.Length-1);
+            sortingAlgorithms.StoogeSort(num,0,num.Length-1);
         }
 
         [TestMethod]
         public void TestEmptyStoogeSort()
         {
             int[] num = { };
-            SortingAlgorithms.StoogeSort(num, 0, num.Length - 1);
+            sortingAlgorithms.StoogeSort(num, 0, num.Length - 1);
         }
 
         [TestMethod]
         public void TestNullStoogeSort()
         {
            
-            SortingAlgorithms.StoogeSort(null, 0, 0);
+            sortingAlgorithms.StoogeSort(null, 0, 0);
         }
 
         [TestMethod]
         public void TestQuickSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.QuickSort(num,0,num.Length-1);
+            sortingAlgorithms.QuickSort(num,0,num.Length-1);
         }
 
         [TestMethod]
         public void TestEmptyQuickSort()
         {
             int[] num = {};
-            SortingAlgorithms.QuickSort(num, 0, num.Length - 1);
+            sortingAlgorithms.QuickSort(num, 0, num.Length - 1);
         }
 
         [TestMethod]
         public void TestNullQuickSort()
         {
            
-            SortingAlgorithms.QuickSort(null, 0, 0);
+            sortingAlgorithms.QuickSort(null, 0, 0);
         }
 
         [TestMethod]
         public void TestSelectionSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.SelectionSort(num);
+            sortingAlgorithms.SelectionSort(num);
         }
         [TestMethod]
         public void TestNullSelectionSort()
         {
             
-            SortingAlgorithms.SelectionSort(null);
+            sortingAlgorithms.SelectionSort(null);
         }
         [TestMethod]
         public void TestEmptySelectionSort()
         {
             int[] num = { };
-            SortingAlgorithms.SelectionSort(num);
+            sortingAlgorithms.SelectionSort(num);
         }
 
 
@@ -130,7 +132,7 @@ namespace SolutionsExamplesTests
         public void TestShellSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.ShellSort(num);
+            sortingAlgorithms.ShellSort(num);
         }
 
 
@@ -138,7 +140,7 @@ namespace SolutionsExamplesTests
         public void TestNullShellSort()
         {
            
-            SortingAlgorithms.ShellSort(null);
+            sortingAlgorithms.ShellSort(null);
         }
 
 
@@ -146,7 +148,7 @@ namespace SolutionsExamplesTests
         public void TestEmptyShellSort()
         {
             int[] num = { };
-            SortingAlgorithms.ShellSort(num);
+            sortingAlgorithms.ShellSort(num);
         }
 
 
@@ -154,37 +156,37 @@ namespace SolutionsExamplesTests
         public void TestCombSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.CombSort(num);
+            sortingAlgorithms.CombSort(num);
         }
         [TestMethod]
         public void TestEmptyCombSort()
         {
             int[] num = { };
-            SortingAlgorithms.CombSort(num);
+            sortingAlgorithms.CombSort(num);
         }
         [TestMethod]
         public void TestNullCombSort()
         { 
-            SortingAlgorithms.CombSort(null);
+            sortingAlgorithms.CombSort(null);
         }
 
         [TestMethod]
         public void TestGnomeSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.GnomeSort(num);
+            sortingAlgorithms.GnomeSort(num);
         }
         [TestMethod]
         public void TestEmptyGnomeSort()
         {
             int[] num = {};
-            SortingAlgorithms.GnomeSort(num);
+            sortingAlgorithms.GnomeSort(num);
         }
         [TestMethod]
         public void TestNullGnomeSort()
         {
            
-            SortingAlgorithms.GnomeSort(null);
+            sortingAlgorithms.GnomeSort(null);
         }
 
 
@@ -192,30 +194,42 @@ namespace SolutionsExamplesTests
         public void TestMergeSort()
         {
             int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.MergeSort(num,0,num.Length-1);
+            sortingAlgorithms.MergeSort(num,0,num.Length-1);
         }
 
         [TestMethod]
         public void TestEmptyMergeSort()
         {
             int[] num = {};
-            SortingAlgorithms.MergeSort(num, 0, num.Length - 1);
+            sortingAlgorithms.MergeSort(num, 0, num.Length - 1);
         }
 
         [TestMethod]
         public void TestNullMergeSort()
         {
            
-            SortingAlgorithms.MergeSort(null, 0, 0);
+            sortingAlgorithms.MergeSort(null, 0, 0);
         }
-
 
         [TestMethod]
-        [Ignore]
-        public void TestBogoSort()
+        public void TestTreeSort()
         {
-            int[] num = { 1, 6, 4, 8, 10, 45, 2, 67, 6, 3, 0, -5 };
-            SortingAlgorithms.BogoSort(num);
+            int[] num = { 1, 45, 6, 7, 22, 345, 52, 1, 6, -9, 8};
+            sortingAlgorithms.TreeSort(num);
         }
+
+        [TestMethod]
+        public void TestEmptyTreeSort()
+        {
+            int[] num = { };
+            sortingAlgorithms.TreeSort(num);
+        }
+
+        [TestMethod]
+        public void TestNullTreeSort()
+        {
+            sortingAlgorithms.TreeSort(null);
+        }
+
     }
 }
