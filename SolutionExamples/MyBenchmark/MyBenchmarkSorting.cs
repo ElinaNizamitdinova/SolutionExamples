@@ -1,177 +1,160 @@
 ﻿using BenchmarkDotNet.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BenchmarkDotNet;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using SolutionExamples.ArraysFiles;
 
-namespace SolutionExamples { 
-  
+namespace SolutionExamples
+{
+
+    [MemoryDiagnoser]
     public class MyBenchmarkSorting
     {
+        SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
+
+        int[] arrayHundredElements = ArrayFileReader.ReadingArrayHundredElements();
+        int[] arrayTenThousandElements = ArrayFileReader.ReadingArrayTenThousandElements();
 
         [Benchmark]
         public void RunBubbleSortHundredElements()
         {
-            int[] num = RandomArray(100);
-            SortingAlgorithms.BubbleSort(num);
+            sortingAlgorithms.BubbleSort(arrayHundredElements);
         }
 
         [Benchmark]
         public void RunBubbleSortTenThousandElements()
         {
-            int[] num = RandomArray(10000);
-            SortingAlgorithms.BubbleSort(num);
+            sortingAlgorithms.BubbleSort(arrayTenThousandElements);
         }
 
         [Benchmark]
         public void RunShakerSortHundredElements()
         {
-            int[] numbers = RandomArray(100);
-            SortingAlgorithms.ShakerSort(numbers);
+            sortingAlgorithms.ShakerSort(arrayHundredElements);
         }
         [Benchmark]
         public void RunShakerSortTenThousandElements()
         {
-            int[] numbers = RandomArray(10000);
-            SortingAlgorithms.ShakerSort(numbers);
+            sortingAlgorithms.ShakerSort(arrayTenThousandElements);
         }
 
-        //[Benchmark]
-        //public void RunInsertionSortHundredElements()
-        //{
-        //    int[] numbers = RandomArray(100);
-        //    SortingAlgorithms.InsertionSort(numbers);
-
-        //}
-
-        //[Benchmark]
-        //public void RunInsertionSortTenThousandElements()
-        //{
-        //    int[] numbers = RandomArray(10000);
-        //    SortingAlgorithms.InsertionSort(numbers);
-
-        //}
-
-        //[Benchmark]
-        //public void RunShellSortHundredElements()
-        //{
-        //    int[] numbers = RandomArray(100);
-        //    SortingAlgorithms.ShellSort(numbers);
-
-        //}
-        //[Benchmark]
-        //public void RunShellSortTenThousandElements()
-        //{
-        //    int[] numbers = RandomArray(10000);
-        //    SortingAlgorithms.ShellSort(numbers);
-
-        //}
-
-        //[Benchmark]
-        //public void RunCombSortHundredElements()
-        //{
-        //    int[] numbers = RandomArray(100);
-        //    SortingAlgorithms.CombSort(numbers);
-
-        //}
-
-
-        //[Benchmark]
-        //public void RunCombSortTenThousandElements()
-        //{
-        //    int[] numbers = RandomArray(10000);
-        //    SortingAlgorithms.CombSort(numbers);
-
-        //}
-
-        //[Benchmark]
-        //public void RunSelectionSortHundredElements()
-        //{
-        //    int[] numbers = RandomArray(100);
-        //    SortingAlgorithms.SelectionSort(numbers);
-
-        //}
-        //[Benchmark]
-        //public void RunSelectionSortTenThousandElements()
-        //{
-        //    int[] numbers = RandomArray(10000);
-        //    SortingAlgorithms.SelectionSort(numbers);
-
-        //}
-
-        //[Benchmark]
-        //public void RunStoogeSortHundredElements()
-        //{
-        //    int[] numbers = RandomArray(100);
-        //    SortingAlgorithms.StoogeSort(numbers,0,numbers.Length-1);
-
-        //}
-        //[Benchmark]
-        //public void RunStoogeSortTenThousandElements()
-        //{
-        //    int[] numbers = RandomArray(10000);
-        //    SortingAlgorithms.StoogeSort(numbers, 0, numbers.Length - 1);
-
-        //}
-
-        //[Benchmark]
-        //public void RunQuickSortHundredElements()
-        //{
-        //    int[] numbers = RandomArray(100);
-        //    SortingAlgorithms.QuickSort(numbers, 0, numbers.Length - 1);
-
-        //}
-
-
-        //[Benchmark]
-        //public void RunQuickSortTenThousandElements()
-        //{
-        //    int[] numbers = RandomArray(10000);
-        //    SortingAlgorithms.QuickSort(numbers, 0, numbers.Length - 1);
-
-        //}
-
-        //[Benchmark]
-        //public void RunGnomeSortHundredElements()
-        //{
-        //    int[] numbers = RandomArray(100);
-        //    SortingAlgorithms.GnomeSort(numbers);
-
-        //}
-        //[Benchmark]
-        //public void RunGnomeSortTenThousandElements()
-        //{
-        //    int[] numbers = RandomArray(10000);
-        //    SortingAlgorithms.GnomeSort(numbers);
-
-        //}
-
-        //[Benchmark]
-        //public void RunMergeSortHundredElements()
-        //{
-        //    int[] numbers = RandomArray(100);
-        //    SortingAlgorithms.MergeSort(numbers,0,numbers.Length-1);
-
-        //}
-
-        //[Benchmark]
-        //public void RunMergeSortTenthousandElements()
-        //{
-        //    int[] numbers = RandomArray(10000);
-        //    SortingAlgorithms.MergeSort(numbers, 0, numbers.Length - 1);
-
-        //}
-
-        public int[] RandomArray(int len)
+        [Benchmark]
+        public void RunInsertionSortHundredElements()
         {
-            Random random = new Random();
-            int[] arr = new int[len];
-            for (int i = 0; i < arr.Length; i++)
-                arr[i] = random.Next(-100,100);
-            return arr;
+            sortingAlgorithms.InsertionSort(arrayHundredElements);
+
+        }
+
+        [Benchmark]
+        public void RunInsertionSortTenThousandElements()
+        {
+            sortingAlgorithms.InsertionSort(arrayTenThousandElements);
+
+        }
+
+        [Benchmark]
+        public void RunShellSortHundredElements()
+        {
+            sortingAlgorithms.ShellSort(arrayHundredElements);
+
+        }
+        [Benchmark]
+        public void RunShellSortTenThousandElements()
+        {
+           sortingAlgorithms.ShellSort(arrayTenThousandElements);
+
+        }
+
+        [Benchmark]
+        public void RunCombSortHundredElements()
+        {
+            sortingAlgorithms.CombSort(arrayHundredElements);
+
+        }
+
+
+        [Benchmark]
+        public void RunCombSortTenThousandElements()
+        {
+            sortingAlgorithms.CombSort(arrayTenThousandElements);
+
+        }
+
+        [Benchmark]
+        public void RunSelectionSortHundredElements()
+        {
+            sortingAlgorithms.SelectionSort(arrayHundredElements);
+
+        }
+        [Benchmark]
+        public void RunSelectionSortTenThousandElements()
+        {
+            sortingAlgorithms.SelectionSort(arrayTenThousandElements);
+
+        }
+
+
+        [Benchmark]
+        public void RunTreeSortHundredElements()
+        {
+            sortingAlgorithms.TreeSort(arrayHundredElements);
+        }
+
+        [Benchmark]
+        public void RunTreeSortTenThousandElements()
+        {
+            sortingAlgorithms.TreeSort(arrayTenThousandElements);
+        }
+
+        [Benchmark]
+        public void RunStoogeSortHundredElements()
+        {
+            sortingAlgorithms.StoogeSort(arrayHundredElements, 0,arrayHundredElements.Length - 1);
+
+        }
+        [Benchmark]
+        public void RunStoogeSortTenThousandElements()
+        {
+            sortingAlgorithms.StoogeSort(arrayTenThousandElements, 0, arrayTenThousandElements.Length - 1);
+
+        }
+
+        [Benchmark]
+        public void RunQuickSortHundredElements()
+        {
+           sortingAlgorithms.QuickSort(arrayHundredElements, 0, arrayHundredElements.Length - 1);
+
+        }
+
+
+        [Benchmark]
+        public void RunQuickSortTenThousandElements()
+        {
+           sortingAlgorithms.QuickSort(arrayTenThousandElements, 0, arrayTenThousandElements.Length - 1);
+
+        }
+
+        [Benchmark]
+        public void RunGnomeSortHundredElements()
+        {
+            sortingAlgorithms.GnomeSort(arrayHundredElements);
+
+        }
+        [Benchmark]
+        public void RunGnomeSortTenThousandElements()
+        {
+            sortingAlgorithms.GnomeSort(arrayTenThousandElements);
+
+        }
+
+        [Benchmark]
+        public void RunMergeSortHundredElements()
+        {
+            sortingAlgorithms.MergeSort(arrayHundredElements, 0, arrayHundredElements.Length - 1);
+
+        }
+
+        [Benchmark]
+        public void RunMergeSortTenThousandElements()
+        {
+          sortingAlgorithms.MergeSort(arrayTenThousandElements, 0, arrayTenThousandElements.Length - 1);
 
         }
 
