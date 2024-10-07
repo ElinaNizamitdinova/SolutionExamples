@@ -1,62 +1,67 @@
 ﻿namespace SolutionExamples
 {
 
-    public static class SortingAlgorithms
+    public class SortingAlgorithms
     {
+
+        static void Swap(ref int firstElement, ref int secondEelement)
+        {
+            var temp = firstElement;
+            firstElement = secondEelement;
+            secondEelement = temp;
+        }
 
         /// <summary>
         /// The method implements the bubble sort algorithm.
         /// </summary>
         /// <param name="numbers"></param>
         /// <returns></returns>
-        public static int[] BubbleSort(int[] numbers)
+        public int[] BubbleSort(int[] numbers)
         {
-            for (int i = 0; i < numbers.Length; i++)
+            if (numbers != null)
             {
-                for (int j = 0; j < numbers.Length - 1; j++)
+                for (int i = 0; i < numbers.Length; i++)
                 {
-                    if (numbers[j] > numbers[j + 1])
+                    for (int j = 0; j < numbers.Length - 1; j++)
                     {
-                        var temp = numbers[j];
-                        numbers[j] = numbers[j + 1];
-                        numbers[j + 1] = temp;
+                        if (numbers[j] > numbers[j + 1])
+                        {
+                            Swap(ref numbers[j], ref numbers[j + 1]);
+                        }
                     }
-
                 }
-
             }
             return numbers;
-
         }
 
         /// <summary>
-        /// The method implements the shaker sort(cocktail sort)) algorithm.
+        /// The method implements the shaker sort(cocktail sort) algorithm.
         /// </summary>
         /// <param name="numbers"></param>
         /// <returns></returns>
-        public static int[] ShakerSort(int[] numbers)
+
+        public int[] ShakerSort(int[] numbers)
         {
-            for (int i = 0; i < numbers.Length / 2; i++)
+            if (numbers != null)
             {
-                for (int j = i; j < numbers.Length - 1 - i; j++)
+                for (int i = 0; i < numbers.Length / 2; i++)
                 {
-                    if (numbers[j] > numbers[j + 1])
+                    for (int j = i; j < numbers.Length - 1 - i; j++)
                     {
-                        var temp = numbers[j];
-                        numbers[j] = numbers[j + 1];
-                        numbers[j + 1] = temp;
-                    }
+                        if (numbers[j] > numbers[j + 1])
+                        {
+                            Swap(ref numbers[j], ref numbers[j + 1]);
+                        }
 
-                }
-                for (int j = numbers.Length - 2 - i; j > i; j--)
-                {
-                    if (numbers[j - 1] > numbers[j])
+                    }
+                    for (int j = numbers.Length - 2 - i; j > i; j--)
                     {
-                        var temp = numbers[j - 1];
-                        numbers[j - 1] = numbers[j];
-                        numbers[j] = temp;
-                    }
+                        if (numbers[j - 1] > numbers[j])
+                        {
+                            Swap(ref numbers[j - 1], ref numbers[j]);
+                        }
 
+                    }
                 }
 
 
@@ -71,26 +76,24 @@
         /// </summary>
         /// <param name="numbers"></param>
         /// <returns></returns>
-        public static int[] InsertionSort(int[] numbers)
+
+        public int[] InsertionSort(int[] numbers)
         {
-            int x;
-            int j;
-            for (int i = 1; i < numbers.Length; i++)
+            if (numbers != null)
             {
-                x = numbers[i];
-                j = i;
-                while (j > 0 && numbers[j - 1] > x)
+                for (int i = 1; i < numbers.Length; i++)
                 {
-                    var temp = numbers[j];
-                    numbers[j] = numbers[j - 1];
-                    numbers[j - 1] = temp;
-                    j -= 1;
+                    int x = numbers[i];
+                    int j = i;
+                    while (j > 0 && numbers[j - 1] > x)
+                    {
+                        Swap(ref numbers[j], ref numbers[j - 1]);
+                        j--;
+                    }
+                    numbers[j] = x;
                 }
-                numbers[j] = x;
             }
             return numbers;
-
-
         }
 
 
@@ -99,57 +102,30 @@
         /// </summary>
         /// <param name="numbers"></param>
         /// <returns></returns>
-        static int[] ShellSort(int[] numbers)
+
+        public int[] ShellSort(int[] numbers)
         {
-            //расстояние между элементами, которые сравниваются
-            var d = numbers.Length / 2;
-            while (d >= 1)
+            if (numbers != null)
             {
-                for (var i = d; i < numbers.Length; i++)
+                var d = numbers.Length / 2;
+                while (d >= 1)
                 {
-                    var j = i;
-                    while ((j >= d) && (numbers[j - d] > numbers[j]))
+                    for (var i = d; i < numbers.Length; i++)
                     {
-                        var temp = numbers[j];
-                        numbers[j] = numbers[j - d];
-                        numbers[j - d] = temp;
-                        j = j - d;
+                        var j = i;
+                        while ((j >= d) && (numbers[j - d] > numbers[j]))
+                        {
+                            Swap(ref numbers[j], ref numbers[j - d]);
+                            j -= d;
+                        }
                     }
+
+                    d /= 2;
                 }
-
-                d = d / 2;
             }
-
             return numbers;
         }
 
-
-        /// <summary>
-        /// The method implements the stooge sort algorithm.
-        /// </summary>
-        /// <param name="numbers"></param>
-        /// <param name="startIndex"></param>
-        /// <param name="endIndex"></param>
-        /// <returns></returns>
-        static int[] StoogeSort(int[] numbers, int startIndex, int endIndex)
-        {
-            if (numbers[startIndex] > numbers[endIndex])
-            {
-                var temp = numbers[startIndex];
-                numbers[startIndex] = numbers[endIndex];
-                numbers[endIndex] = temp;
-            }
-
-            if (endIndex - startIndex > 1)
-            {
-                var len = (endIndex - startIndex + 1) / 3;
-                StoogeSort(numbers, startIndex, endIndex - len);
-                StoogeSort(numbers, startIndex + len, endIndex);
-                StoogeSort(numbers, startIndex, endIndex - len);
-            }
-
-            return numbers;
-        }
 
 
 
@@ -160,7 +136,8 @@
         /// <param name="lowIndex"></param>
         /// <param name="highIndex"></param>
         /// <returns></returns>
-        public static int[] MergeSort(int[] array, int lowIndex, int highIndex)
+
+        public int[] MergeSort(int[] array, int lowIndex, int highIndex)
         {
             if (lowIndex < highIndex)
             {
@@ -220,34 +197,30 @@
         /// <param name="numbers"></param>
         /// <param name="currentIndex"></param>
         /// <returns></returns>
-        static int[] SelectionSort(int[] numbers, int currentIndex = 0)
-        {
-            if (currentIndex == numbers.Length)
-                return numbers;
 
-            var index = IndexOfMin(numbers, currentIndex);
-            if (index != currentIndex)
-            {
-                var temp = numbers[index];
-                numbers[index] = numbers[currentIndex];
-                numbers[currentIndex] = temp;
-            }
 
-            return SelectionSort(numbers, currentIndex + 1);
-        }
-        static int IndexOfMin(int[] numbers, int n)
+        public int[] SelectionSort(int[] numbers)
         {
-            int indexOfmin = n;
-            for (int i = n; i < numbers.Length; i++)
+            if (numbers != null)
             {
-                if (numbers[1] < numbers[indexOfmin])
+                for (int i = 0; i < numbers.Length - 1; ++i)
                 {
-                    indexOfmin = i;
+                    int min = i;
+                    for (int j = i + 1; j < numbers.Length; ++j)
+                    {
+                        if (numbers[j].CompareTo(numbers[min]) < 0)
+                        {
+                            min = j;
+                        }
+                    }
+
+                    Swap(ref numbers[i], ref numbers[min]);
                 }
             }
 
-            return indexOfmin;
+            return numbers;
         }
+
 
         /// <summary>
         /// The method implements the quick sort algorithm.
@@ -256,7 +229,8 @@
         /// <param name="minIndex"></param>
         /// <param name="maxIndex"></param>
         /// <returns></returns>
-        public static int[] QuickSort(int[] numbers, int minIndex, int maxIndex)
+
+        public int[] QuickSort(int[] numbers, int minIndex, int maxIndex)
         {
             if (minIndex >= maxIndex)
             {
@@ -278,16 +252,12 @@
                 if (numbers[i] < numbers[maxIndex])
                 {
                     pivot++;
-                    var tmp = numbers[pivot];
-                    numbers[pivot] = numbers[i];
-                    numbers[i] = tmp;
+                    Swap(ref numbers[pivot], ref numbers[i]);
                 }
             }
 
             pivot++;
-            var temp = numbers[pivot];
-            numbers[pivot] = numbers[maxIndex];
-            numbers[maxIndex] = temp;
+            Swap(ref numbers[pivot], ref numbers[maxIndex]);
             return pivot;
         }
 
@@ -297,77 +267,152 @@
         /// </summary>
         /// <param name="numbers"></param>
         /// <returns></returns>
-        public static int[] GnomeSort(int[] numbers)
-        {
-            var index = 1;
-            var nextIndex = index + 1;
 
-            while (index < numbers.Length)
+        public int[] GnomeSort(int[] numbers)
+
+        {
+            if (numbers != null)
             {
-                if (numbers[index - 1] < numbers[index])
+                var index = 1;
+                var nextIndex = index + 1;
+
+                while (index < numbers.Length)
                 {
-                    index = nextIndex;
-                    nextIndex++;
-                }
-                else
-                {
-                    var temp = numbers[index - 1];
-                    numbers[index - 1] = numbers[index];
-                    numbers[index] = temp;
-                    index--;
-                    if (index == 0)
+                    if (numbers[index - 1] < numbers[index])
                     {
                         index = nextIndex;
                         nextIndex++;
+                    }
+                    else
+                    {
+                        Swap(ref numbers[index - 1], ref numbers[index]);
+                        index--;
+                        if (index == 0)
+                        {
+                            index = nextIndex++;
+                        }
                     }
                 }
             }
             return numbers;
         }
 
-
-
         /// <summary>
-        /// The method implements the random sort algorithm.
+        /// The method implements the comb sort algorithm.
         /// </summary>
         /// <param name="numbers"></param>
         /// <returns></returns>
-        public static int[] Bogosort(int[] numbers)
+
+        public int[] CombSort(int[] numbers)
         {
-            while (!IsSorted(numbers))
+            if (numbers != null)
             {
-                Shuffle(numbers);
+
+                var arrayLength = numbers.Length;
+                var currentStep = arrayLength - 1;
+
+                while (currentStep > 1)
+                {
+                    for (int i = 0; i + currentStep < numbers.Length; i++)
+                    {
+                        if (numbers[i] > numbers[i + currentStep])
+                        {
+                            Swap(ref numbers[i], ref numbers[i + currentStep]);
+                        }
+                    }
+
+                    currentStep = GetNextStep(currentStep);
+                }
+
+
+                for (var i = 1; i < numbers.Length; i++)
+                {
+                    var swapFlag = false;
+                    for (var j = 0; j < numbers.Length - i; j++)
+                    {
+                        if (numbers[j] > numbers[j + 1])
+                        {
+                            Swap(ref numbers[j], ref numbers[j + 1]);
+                            swapFlag = true;
+                        }
+                    }
+
+                    if (!swapFlag)
+                    {
+                        break;
+                    }
+                }
             }
 
             return numbers;
+
+
         }
-
-
-        private static bool IsSorted(int[] numbers)
+        static int GetNextStep(int s)
         {
-            for (int i = 0; i < numbers.Length - 1; i++)
-            {
-                if (numbers[i] > numbers[i + 1])
-                    return false;
-            }
-
-            return true;
+            s = s * 1000 / 1247; // Оптимальное значение фактора уменьшения равно 1/(1-e-φ) ≈ 1.247, где е – основание натурального логарифма, а φ – золотое сечение.
+            return s > 1 ? s : 1;
         }
 
-        private static void Shuffle(int[] numbers)
+        /// <summary>
+        /// The method implements the binary tree sorting algorithm.
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <returns></returns>
+        public int[] TreeSort(int[] numbers)
+        {
+            if (numbers != null && numbers.Length > 0)
+            {
+                var treeNode = new TreeNode(numbers[0]);
+                for (int i = 1; i < numbers.Length; i++)
+                {
+                    treeNode.Insert(new TreeNode(numbers[i]));
+                }
+
+                return treeNode.Transform();
+            }
+            return null;
+        }
+
+
+        // Непрактичные виды сортировок
+
+        /// <summary>
+        /// The method implements the stooge sort algorithm.
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="endIndex"></param>
+        /// <returns></returns>
+
+        public int[] StoogeSort(int[] numbers, int startIndex, int endIndex)
+        {
+            if (startIndex < endIndex)
+            {
+                if (numbers[startIndex] > numbers[endIndex])
+                {
+                    Swap(ref numbers[startIndex], ref numbers[endIndex]);
+                }
+
+                if (endIndex - startIndex > 1)
+                {
+                    var len = (endIndex - startIndex + 1) / 3;
+                    StoogeSort(numbers, startIndex, endIndex - len);
+                    StoogeSort(numbers, startIndex + len, endIndex);
+                    StoogeSort(numbers, startIndex, endIndex - len);
+                }
+            }
+            return numbers;
+        }
+        public static int[] RandomArray(int len)
         {
             Random random = new Random();
-            var n = numbers.Length;
-            while (n > 1)
-            {
-                n--;
-                var i = random.Next(n + 1);
-                var temp = numbers[i];
-                numbers[i] = numbers[n];
-                numbers[n] = temp;
-            }
-        }
+            int[] arr = new int[len];
+            for (int i = 0; i < arr.Length; i++)
+                arr[i] = random.Next(-100, 100);
+            return arr;
 
+        }
 
     }
 }
